@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Adhiparasakthi Engineering College</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            padding: 45px 65px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Logo */
+        .logo {
+            display: block;
+            width: 180px;
+            height: auto;
+            margin: 0 auto 25px;
+        }
+
+        /* Heading */
+        .heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .heading h1 {
+            font-size: 42px;
+            color: #20242b;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            font-size: 20px;
+            color: #6b7280;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 20px;
+            color: #20242b;
+            margin-bottom: 10px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 65px;
+            padding: 0 55px;
+            border: 1px solid #d8dde5;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .input-box input:focus {
+            border-color: #b51218;
+            box-shadow: 0 0 0 2px rgba(181, 18, 24, 0.08);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 23px;
+            color: #7b8491;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            cursor: pointer;
+            color: #7b8491;
+        }
+
+        /* Remember + Forgot */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0 30px;
+            font-size: 17px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .remember input {
+            width: 18px;
+            height: 18px;
+        }
+
+        .forgot {
+            color: #1769c2;
+            text-decoration: none;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            height: 65px;
+            border: none;
+            border-radius: 10px;
+            background: #b51218;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #940e13;
+        }
+
+        /* Signup */
+        .signup {
+            text-align: center;
+            margin-top: 35px;
+            color: #596273;
+            font-size: 17px;
+        }
+
+        .signup a {
+            color: #1769c2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .login-container {
+                padding: 30px 25px;
+            }
+
+            .logo {
+                width: 140px;
+            }
+
+            .heading h1 {
+                font-size: 30px;
+            }
+
+            .heading p {
+                font-size: 16px;
+            }
+
+            .form-group label {
+                font-size: 17px;
+            }
+
+            .input-box input {
+                height: 55px;
+                font-size: 16px;
+            }
+
+            .options {
+                font-size: 14px;
+            }
+
+            .login-btn {
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- College Logo -->
+        <img src="logo.png" alt="Adhiparasakthi Engineering College Logo" class="logo">
+
+        <!-- Heading -->
+        <div class="heading">
+            <h1>Welcome Back</h1>
+            <p>Login to your account</p>
+        </div>
+
+        <!-- Login Form -->
+        <form onsubmit="login(event)">
+
+            <!-- Username -->
+            <div class="form-group">
+                <label>Username</label>
+
+                <div class="input-box">
+                    <span class="input-icon">👤</span>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter your username"
+                        required
+                    >
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label>Password</label>
+
+                <div class="input-box">
+                    <span class="input-icon">🔒</span>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <span class="eye-icon" onclick="togglePassword()">👁</span>
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="options">
+
+                <label class="remember">
+                    <input type="checkbox">
+                    <span>Remember me</span>
+                </label>
+
+                <a href="#" class="forgot">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <!-- Signup -->
+        <div class="signup">
+            Don't have an account?
+            <a href="#">Sign up</a>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Show / Hide Password
+        function togglePassword() {
+
+            const password = document.getElementById("password");
+
+            if (password.type === "password") {
+                password.type = "text";
+            } else {
+                password.type = "password";
+            }
+        }
+
+
+        // Login
+        function login(event) {
+
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                alert("Please enter username and password");
+                return;
+            }
+
+            alert("Login successful!");
+        }
+
+    </script>
+
+</body>
+</html>
